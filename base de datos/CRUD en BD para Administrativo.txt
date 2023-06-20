@@ -1,0 +1,7 @@
+INSERT INTO usuario (rut, nombres, fechaNacimiento, tipoUsuario, area, experienciaPrevia) VALUES (17137873-7,"jose","20-20-20","Administrativo","informatica","2 años");
+
+SELECT rut, nombres, fechaNacimiento, tipoUsuario, area, experienciaPrevia FROM usuario;
+
+UPDATE usuario SET nombres="ignacio", fechaNacimiento="10-10-10", area ="contabilidad", experienciaPrevia="1 año" WHERE  rut = "17137866";
+
+DELETE FROM usuario WHERE rut = "17137866"

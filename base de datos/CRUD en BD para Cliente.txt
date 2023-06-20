@@ -1,0 +1,8 @@
+INSERT INTO usuario (rut, nombre, fechaNacimiento, tipoUsuario, apellidos, telefono, sistemaSalud, afp, direccion, comuna) 
+VALUES ('22222-2', 'jose', '2020-20-20', 'Cliente', 'Valenzuela', '971481089','Fonasa','Modelo','Calle Falsa 123','Santiago','20-20-2000');
+
+SELECT rut, nombre, fechaNacimiento, tipoUsuario, apellidos, telefono, sistemaSalud, afp, direccion, comuna FROM usuario;
+
+UPDATE usuario SET nombre="ignacio", fechaNacimiento="10-10-10", apellidos ="gonzalez", telefono="12345678", sistemaSalud="Fonasa", afp="Modelo", direccion="Calle Falsa 987654", comuna="valpo" WHERE  rut = "111111-1";
+
+DELETE FROM usuario WHERE rut = "17137866"

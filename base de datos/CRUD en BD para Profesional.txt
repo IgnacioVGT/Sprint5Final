@@ -1,0 +1,7 @@
+INSERT INTO usuario (rut, nombre, fechaNacimiento, tipoUsuario, titulo, fechaIngreso) VALUES ('111111-1', 'jose', '2020-20-20', 'Profesional', 'Capacitacion', '2023-06-20');
+
+SELECT rut, nombre, fechaNacimiento, tipoUsuario, titulo, fechaIngreso FROM usuario;
+
+UPDATE usuario SET nombre="ignacio", fechaNacimiento="10-10-10", titulo ="auditor", fechaIngreso="20-20-20" WHERE  rut = "17137866";
+
+DELETE FROM usuario WHERE rut = "17137866"

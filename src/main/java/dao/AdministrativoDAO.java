@@ -25,8 +25,10 @@ public class AdministrativoDAO {
  	private String usuario = "explorador";
  	private String contrasena = "arenaGato";
  // datos tabla
- 	private String tabla = "administrativo";
+ 	private String tabla = "usuario";
  	private String columnas = "rut, nombres, fechaNacimiento, area, experienciaPrevia";
+ 	private String insertar = "rut, nombres, fechaNacimiento, tipoUsuario, area, experienciaPrevia";
+ 	private String update = "nombres, fechaNacimiento, area, experienciaPrevia";
 
 //Constructor
  	private AdministrativoDAO() {
@@ -62,13 +64,13 @@ public class AdministrativoDAO {
 
  	public void create(Administrativo admin) {
  		String query =
-				"INSERT INTO " + tabla + " (" + columnas + ") VALUES (?, ?, ?, ?, ?)";
+				"INSERT INTO " + tabla + " (" + insertar + ") VALUES (?, ?, ?, 'Administrativo', ?, ?)";
 		try(PreparedStatement statement = conexion.prepareStatement(query)){
 			statement.setString(1, admin.getRut());
         	statement.setString(2, admin.getNombres());
             statement.setString(3, admin.getFechaNacimiento().toString());
-			statement.setString(4,admin.getArea());
-			statement.setString(5,admin.getExperienciaPrevia());
+			statement.setString(5,admin.getArea());
+			statement.setString(6,admin.getExperienciaPrevia());
 			
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -86,7 +88,6 @@ public class AdministrativoDAO {
 			while(resultados.next()) {
 				Administrativo admin = new Administrativo();
 				
-				admin.setId(resultados.getInt("id"));
 				admin.setRut(resultados.getString("rut"));
                 admin.setNombres(resultados.getString("nombres"));
                 admin.setFechaNacimiento(LocalDate.parse(resultados.getString("fechaNacimiento")));
@@ -102,15 +103,14 @@ public class AdministrativoDAO {
  	}
  	
  	public void update(Administrativo admin) {
- 		String query = "UPDATE " + tabla + "SET " + columnas + " WHERE id = ?";
+ 		String query = "UPDATE " + tabla + "SET " + update + " WHERE rut = ?";
  		try (PreparedStatement statement = conexion.prepareStatement(query)) {
+        	statement.setString(1, admin.getNombres());
+            statement.setString(2, admin.getFechaNacimiento().toString());
+            statement.setString(3, admin.getArea());
+            statement.setString(4, admin.getExperienciaPrevia());
+// Especificar RUT
  			statement.setString(1, admin.getRut());
-        	statement.setString(2, admin.getNombres());
-            statement.setString(3, admin.getFechaNacimiento().toString());
-            statement.setString(4, admin.getArea());
-            statement.setString(5, admin.getExperienciaPrevia());
-// Especificar ID
-            statement.setInt(6, admin.getId());
 // Ejecutar
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -119,16 +119,19 @@ public class AdministrativoDAO {
  		
  	}
 
-    public void delete(int id) {
-        String query = "DELETE FROM " + tabla + " WHERE id = ?";
+    public void delete(String rut) {
+        String query = "DELETE FROM " + tabla + " WHERE rut = ?";
 
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
-            statement.setInt(1, id);
+            statement.setString(1, rut);
 // Ejecutar
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+    
+    
+    
 
 }

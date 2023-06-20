@@ -1,0 +1,16 @@
+CREATE TABLE usuario (
+  rut VARCHAR(10) PRIMARY KEY,
+  nombres VARCHAR(20) NOT NULL,
+  fechaNacimiento VARCHAR(10) NOT NULL,
+  tipoUsuario VARCHAR(12) NOT NULL,
+  area VARCHAR(20),
+  experienciaPrevia VARCHAR(50),
+  apellidos VARCHAR(20),
+  telefono VARCHAR(10),
+  sistemaSalud VARCHAR(6),
+  afp VARCHAR(10),
+  direccion VARCHAR(30),
+  comuna VARCHAR(45),
+  titulo VARCHAR(30),
+  fechaIngreso VARCHAR(10)
+);
