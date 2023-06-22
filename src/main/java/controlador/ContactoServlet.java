@@ -31,16 +31,29 @@ public class ContactoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		String nombres, correo, consulta;
-		nombres = request.getParameter("nombres");
-		correo = request.getParameter("correo");
-		consulta = request.getParameter("consulta");
-
-		System.out.println("Nombres: " + nombres);
-		System.out.println("Correo: " + correo);
-		System.out.println("Mensaje: " + consulta);
+		/*
+		 * doGet(request, response); String nombres, correo, consulta; nombres =
+		 * request.getParameter("nombres"); correo = request.getParameter("correo");
+		 * consulta = request.getParameter("consulta");
+		 * 
+		 * System.out.println("Nombres: " + nombres); System.out.println("Correo: " +
+		 * correo); System.out.println("Mensaje: " + consulta);
+		 * 
+		 * request.getRequestDispatcher("/index.jsp").forward(request, response);
+		 */
 		
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		String nombres, correo, consulta;
+	    nombres = request.getParameter("nombres");
+	    correo = request.getParameter("correo");
+	    consulta = request.getParameter("consulta");
+
+	    System.out.println("Nombres: " + nombres);
+	    System.out.println("Correo: " + correo);
+	    System.out.println("Mensaje: " + consulta);
+
+	    request.getRequestDispatcher("/confirmacion.jsp").forward(request, response);
+		
+		
+		
 	}
 }

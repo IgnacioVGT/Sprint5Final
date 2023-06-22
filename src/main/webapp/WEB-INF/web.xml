@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+
+
+	<display-name>Mod5</display-name>
+
+	<servlet>
+		<servlet-name>CapacitacionCreateServlet</servlet-name>
+		<servlet-class>controlador.CapacitacionCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>CapacitacionDeleteServlet</servlet-name>
+		<servlet-class>controlador.CapacitacionDeleteServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>CapacitacionUpdateServlet</servlet-name>
+		<servlet-class>controlador.CapacitacionUpdateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ClienteCrearServlet</servlet-name>
+		<servlet-class>controlador.ClienteCrearServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ContactoServlet</servlet-name>
+		<servlet-class>controlador.ContactoServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>LogIn</servlet-name>
+		<servlet-class>controlador.LogIn</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>LogOut</servlet-name>
+		<servlet-class>controlador.LogOut</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UsuarioCrearServlet</servlet-name>
+		<servlet-class>controlador.UsuarioCrearServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UsuarioReadServlet</servlet-name>
+		<servlet-class>controlador.UsuarioReadServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>InicioServlet</servlet-name>
+		<servlet-class>controlador.InicioServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>InicioServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+	<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+
+
+</web-app>
