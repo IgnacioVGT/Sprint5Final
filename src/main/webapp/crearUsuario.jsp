@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
 		</fieldset>
     </form>
 <!-- Formulario Usuario Administrativo -->
-    <form id="Administrativo" class="oculto" action="AdmininstrativoCrear" method="POST" autocomplete="on">
+    <form id="Administrativo" class="oculto" action="AdministrativoCrear" method="POST" autocomplete="on">
         <fieldset>
             <legend>Nuevo Administrativo</legend>
                 <ul>
@@ -75,19 +75,17 @@ pageEncoding="UTF-8"%>
                 </li>
                 <li>Nombres:
                     <input type="text" name="nombres" placeholder="Carlos Julio"
-                                                    pattern="\w+ \w+" required>
+                                                    pattern="[\w+ ]+" required>
                 </li>
                 <li>Fecha Nacimiento:
                     <input type="date" name="fechaNacimiento"
                                                     max="2005-06-01" required>
                 </li>
                 <li>Area:
-                    <input type="text" name="area" pattern="\w+"
-                                                        maxlength="20" required>
+                    <input type="text" name="area" maxlength="20" pattern="[\w+ ]+" required>
                 </li>
                 <li>Experiencia Previa:
-                    <input type="text" maxlength="50" pattern="\w+"
-                                    name="experienciaPrevia" required>
+                    <input type="text" maxlength="50" name="experienciaPrevia" pattern="[\w\d+ ]+" required>
                 </li>
                 </ul>
             <button type="submit">Enviar</button>
@@ -106,16 +104,14 @@ pageEncoding="UTF-8"%>
                                 pattern="[\dkK]" title="digito o 'k'" required>
                 </li>
                 <li>Nombre:
-                    <input type="text" name="nombre" placeholder="Carlos Julio"
-                                                    pattern="\w+ " required>
+                    <input type="text" name="nombre" placeholder="Carlos Julio" pattern="[\w+ ]+" required>
                 </li>
                 <li>Fecha Nacimiento:
                     <input type="date" name="fechaNacimiento"
                                                     max="2005-06-01" required>
                 </li>
                 <li>Titulo:
-                    <input type="text" name="titulo" pattern="\w+ "
-                                                        maxlength="30" required>
+                    <input type="text" name="titulo" maxlength="30" pattern="[\w+ ]+" required>
                 </li>
                 <li>Fecha Ingreso:
                     <input type="date" name="fechaIngreso"
@@ -139,11 +135,11 @@ pageEncoding="UTF-8"%>
 			</li>
 			<li>Nombres:
 				<input type="text" name="nombres" placeholder="Carlos Julio"
-													pattern="\w+ \w+" required>
+													pattern="[\w+ ]+" required>
 			</li>
 			<li>Apellidos:
 				<input type="text" name="apellidos"
-					placeholder="Gonzalez Gonzalez" pattern="\w+ \w+" required>
+					placeholder="Gonzalez Gonzalez" pattern="[\w+ ]+" required>
 			</li>
 			<li>Fecha Nacimiento:
 				<input type="date" name="fechaNacimiento"
@@ -151,7 +147,7 @@ pageEncoding="UTF-8"%>
 			</li>
 			<li>Celular: +(56)
 				<input type="tel" name="telefono" placeholder="912345678"
-							pattern="[0-9]{8}" title="solo numeros" required>
+							pattern="[0-9]{9}" title="solo numeros" required>
 			</li>
 			<li>Sistema de Salud:
                 <input type="radio" id="isapre" name="sistemaSalud"
@@ -164,6 +160,7 @@ pageEncoding="UTF-8"%>
 			<li>AFP:
 				<!-- debería ser una [combobox] -->
 				<select name="afp" id="afp" required>
+					<option selected disabled>-- Seleccione --</option>
 					<option value="Capital">Capital</option>
 					<option value="Cuprum">Cuprum</option>
 					<option value="Habitat">Habitat</option>
@@ -179,13 +176,13 @@ pageEncoding="UTF-8"%>
 			</li>
 			<li>Dirección:
 				<input type="text" name="direccion"
-							placeholder="Los Azufres #123" pattern="\w+ #\d"
+							placeholder="Los Azufres #123" pattern="[\w+ ]+#\d+$"
 														maxlength="30" required>
 			</li>
 			<li>Comuna:
 				<!-- debería ser una [combobox] -->
-				<input type="text" name="comuna" placeholder="Santiago"
-										maxlength="45" pattern="\w+" required>
+				<input type="text" name="comuna" placeholder="Santiago" pattern="[\w+ ]+"
+										maxlength="45" required>
 			</li>
 		</ul>
        		<button type="submit">Enviar</button>

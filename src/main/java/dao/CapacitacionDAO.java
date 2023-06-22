@@ -131,5 +131,8 @@ public class CapacitacionDAO {
             e.printStackTrace();
         }
     }
-
+//_______________________________________________________________________
+    public void readPorID(int id) {
+    	
+    }
 }

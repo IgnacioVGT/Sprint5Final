@@ -27,11 +27,10 @@
         <table class="tabla">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Rut</th>
                     <th>Nombres</th>
                     <th>Fecha de Nacimiento</th>
-                    <th></th>
+                    <th>Tipo Usuario</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,13 +38,14 @@
                 <% if (lista != null) { %>
 	                <% for ( Usuario usuario : lista ){ %>
 	                    <tr>
-	                    	<td><%= usuario.getId() %></td>
 	                        <td><%= usuario.getRut() %></td>
 	                        <td><%= usuario.getNombres() %></td>
 	                        <td><%= usuario.getFechaNacimiento() %></td>
 	                        <td>
-	                            <a href="editar-usuario?id=<%= usuario.getId() %>">Editar</a>
-	                            <a href="eliminar-usuario?id=<%= usuario.getId() %>">Eliminar</a>
+<!-- Comprobacion en Servlet y redireccion a una vista personalizada -->
+<!-- usaremos un JSP para mostrar en detalle la informacion del Usuario basado e el campo de la tabla "TipoCliente" -->
+	                            <a href="UsuarioDetalle?rut=<%=usuario.getRut()%>&tipo=<%=usuario.getTipoUsuario()%>"><%=usuario.getTipoUsuario()%></a> <!-- Envío a Servlet -->
+	                    <!-- definir el atributo y el metodo -->
 	                        </td>
 	                    </tr>
 	                <% } %>

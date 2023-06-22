@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ClienteDAO;
-import modelo.Cliente;
+import dao.ProfesionalDAO;
+import modelo.Profesional;
 
 /**
- * Servlet implementation class CrearCliente
+ * Servlet implementation class ProfesionalCrearServlet
  */
-@WebServlet("/ClienteCrear")
-public class ClienteCrearServlet extends HttpServlet {
+@WebServlet("/ProfesionalCrear")
+public class ProfesionalCrearServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClienteCrearServlet() {
+    public ProfesionalCrearServlet() {
         super();
     }
 
@@ -37,21 +37,17 @@ public class ClienteCrearServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);		
-		Cliente cliente = new Cliente();
-		ClienteDAO clienteDAO = ClienteDAO.getInstancia();
-				
-		cliente.setRut(request.getParameter("rut") + "-" + request.getParameter("dv"));
-		cliente.setNombres(request.getParameter("nombres"));
-		cliente.setFechaNacimiento(LocalDate.parse( request.getParameter("fechaNacimiento")));
-		cliente.setApellidos(request.getParameter("apellidos"));
-		cliente.setTelefono(request.getParameter("telefono"));
-		cliente.setSistemaSalud(request.getParameter("sistemaSalud"));
-		cliente.setAfp(request.getParameter("afp"));
-		cliente.setDireccion(request.getParameter("direccion"));
-		cliente.setComuna(request.getParameter("comuna"));
+		doGet(request, response);
+		Profesional prof = new Profesional();
+		ProfesionalDAO profDAO= ProfesionalDAO.getInstancia();
 		
-		clienteDAO.create(cliente);
+		prof.setRut(request.getParameter("rut") + "-" + request.getParameter("dv"));
+		prof.setNombres(request.getParameter("nombre"));
+		prof.setFechaNacimiento(LocalDate.parse( request.getParameter("fechaNacimiento")));
+		prof.setTitulo(request.getParameter("titulo"));
+		prof.setFechaIngreso(LocalDate.parse(request.getParameter("fechaIngreso")));
+		
+		profDAO.create(prof);
 		
 		request.getRequestDispatcher("/UsuarioRead").forward(request, response);
 	}

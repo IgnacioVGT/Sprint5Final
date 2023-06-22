@@ -10,9 +10,9 @@ public class Cliente extends Usuario {
 
 	public Cliente() {}
 
-	public Cliente(String rut, String nombres, String apellidos, String telefono, String sistemaSalud, String afp,
-		String direccion, String comuna, LocalDate fechaNacimiento) {
-		super(rut, nombres, fechaNacimiento);
+	public Cliente(String rut, String nombres, LocalDate fechaNacimiento, String tipoUsuario, String apellidos, String telefono, String sistemaSalud, String afp,
+		String direccion, String comuna) {
+		super(rut, nombres, fechaNacimiento, tipoUsuario);
 	
 		this.apellidos = apellidos;
 		this.telefono = telefono;

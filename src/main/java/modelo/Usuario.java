@@ -3,19 +3,18 @@ package modelo;
 import java.time.LocalDate;
 
 public class Usuario {
-
-	int id;
-
-	String nombres, rut;
+	
+	String nombres, rut, tipoUsuario;
 
 	LocalDate fechaNacimiento;
 
 	public Usuario() {}
 
-	public Usuario(String rut, String nombres, LocalDate fechaNacimiento) {
+	public Usuario(String rut, String nombres, LocalDate fechaNacimiento, String tipoUsuario) {
+		this.rut = rut;
 		this.nombres = nombres;
 		this.fechaNacimiento = fechaNacimiento;
-		this.rut = rut;
+		this.tipoUsuario = tipoUsuario;
 	}
 //______________Getter y Setter________________
 	public String getNombres() {
@@ -36,16 +35,14 @@ public class Usuario {
 	public void setRut(String rut) {
 		this.rut = rut;
 	}
-	public int getId() {
-		return id;
+	public String getTipoUsuario() {
+		return tipoUsuario;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 	//_______________________________________________________
-	@Override
-	public String toString() {
-		return "Usuario [nombres=" + nombres + ", rut=" + rut + ", fechaNacimiento=" + fechaNacimiento + "]";
-	}
+
+	
 
 }

@@ -37,7 +37,7 @@ public class CapacitacionReadServlet extends HttpServlet {
 
 		request.setAttribute("capacitaciones", capacitaciones);
 		
-		request.getRequestDispatcher("/capacitacionLista.jsp").forward(request, response);
+		request.getRequestDispatcher("/listaCapacitacion.jsp").forward(request, response);
 
 	}
 

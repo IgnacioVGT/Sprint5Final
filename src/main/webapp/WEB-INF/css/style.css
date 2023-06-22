@@ -122,6 +122,10 @@ input[type=radio]+label{
     user-select: none;
 }
 
+input[type=date]{
+	padding: 0 2rem;
+}
+
 .seleccion{
     margin-top: 2rem;
 	display: flex;

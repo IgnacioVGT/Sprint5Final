@@ -12,9 +12,9 @@ public class Profesional extends Usuario {
 
 	public Profesional() {}
 	
-	public Profesional(String nombre, LocalDate fechaNacimiento, String run,
+	public Profesional(String run, String nombres, LocalDate fechaNacimiento, String tipoUsuario,
 								String titulo, LocalDate fechaIngreso) {
-		super(run, nombre, fechaNacimiento);
+		super(run, nombres, fechaNacimiento, tipoUsuario);
 		this.titulo = titulo;
 		this.fechaIngreso = fechaIngreso;
 	}
@@ -31,6 +31,7 @@ public class Profesional extends Usuario {
 	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
+	
 //__________________________________________________
 	@Override
 	public String toString() {

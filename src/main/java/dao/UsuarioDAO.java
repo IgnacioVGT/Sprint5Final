@@ -25,8 +25,8 @@ public class UsuarioDAO {
  	private String usuario = "explorador";
  	private String contrasena = "arenaGato";
  // datos tabla
- 	private String tabla = "";
- 	private String columnas = "";
+ 	private String tabla = "usuario";
+ 	private String columnas = "rut, nombres, fechaNacimiento, tipoUsuario";
  	
     private UsuarioDAO() {
         // Establecer la conexión a la base de datos en el constructor privado
@@ -62,21 +62,21 @@ public class UsuarioDAO {
     }
 //_________________Métodos CRUD___________________
 
-    public List<Usuario> obtenerUsuarios() {
+    public List<Usuario> read() {
     	
         List<Usuario> usuarios = new ArrayList<>();
-        String consulta =
-        				"SELECT id, rut, nombres, fechaNacimiento FROM usuario";
+        String query =
+        				"SELECT " + columnas + " FROM " + tabla;
 
-        try (PreparedStatement statement = conexion.prepareStatement(consulta);	
+        try (PreparedStatement statement = conexion.prepareStatement(query);	
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setId(resultSet.getInt("id"));
                 usuario.setRut(resultSet.getString("rut"));
                 usuario.setNombres(resultSet.getString("nombres"));
                 usuario.setFechaNacimiento(LocalDate.parse(resultSet.getString("fechaNacimiento")));
+                usuario.setTipoUsuario(resultSet.getString("tipoUsuario"));
 
                 usuarios.add(usuario);
             }
@@ -86,66 +86,66 @@ public class UsuarioDAO {
         return usuarios;
     }
 
-    public Usuario obtenerUsuarioPorId(int id) {
-        Usuario usuario = null;
-        String consulta = "SELECT id, rut, nombres, fechaNacimiento FROM usuario WHERE id = ?";
+    public void create(Usuario usuario) {
+        String query = "INSERT INTO usuario (rut, nombres, fechaNacimiento) VALUES (?, ?, ?)";
 
-        try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
+        try (PreparedStatement statement = conexion.prepareStatement(query)){
+
+        	statement.setString(1, usuario.getRut());
+        	statement.setString(2, usuario.getNombres());
+            statement.setString(3, usuario.getFechaNacimiento().toString());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(Usuario usuario) {
+        String query = "UPDATE usuario SET rut = ?, nombres = ?, fechaNacimiento = ? WHERE id = ?";
+
+        try (PreparedStatement statement = conexion.prepareStatement(query)) {
+        	statement.setString(1, usuario.getRut());
+        	statement.setString(2, usuario.getNombres());
+            statement.setString(3, usuario.getFechaNacimiento().toString());
+            statement.setString(4, usuario.getTipoUsuario());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int id) {
+        String query = "DELETE FROM usuario WHERE id = ?";
+
+        try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+//_______________________________________________________________________
+    public Usuario readPorRut(String rut) {
+        Usuario usuario = null;
+        String query = "SELECT id, rut, nombres, fechaNacimiento FROM usuario WHERE id = ?";
+
+        try (PreparedStatement statement = conexion.prepareStatement(query)) {
+            statement.setString(1, rut);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     usuario = new Usuario();
-                    usuario.setId(resultSet.getInt("id"));
+                    usuario.setRut(resultSet.getString("rut"));
                     usuario.setNombres(resultSet.getString("nombre"));
                     usuario.setFechaNacimiento(LocalDate.parse(resultSet.getString("fechaNacimiento")));
+                    usuario.setTipoUsuario(resultSet.getString("tipoUsuario"));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return usuario;
-    }
-
-    public void agregarUsuario(Usuario usuario) {
-        String consulta = "INSERT INTO usuario (rut, nombres, fechaNacimiento) VALUES (?, ?, ?)";
-
-        try (PreparedStatement statement = conexion.prepareStatement(consulta)){
-
-        	statement.setString(1, usuario.getRut());
-        	statement.setString(2, usuario.getNombres());
-            statement.setString(3, usuario.getFechaNacimiento().toString());
-
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void actualizarUsuario(Usuario usuario) {
-        String consulta = "UPDATE usuario SET rut = ?, nombres = ?, fechaNacimiento = ? WHERE id = ?";
-
-        try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
-        	statement.setString(1, usuario.getRut());
-        	statement.setString(2, usuario.getNombres());
-            statement.setString(3, usuario.getFechaNacimiento().toString());
-            statement.setInt(4, usuario.getId());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void eliminarUsuario(int id) {
-        String consulta = "DELETE FROM usuario WHERE id = ?";
-
-        try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 }

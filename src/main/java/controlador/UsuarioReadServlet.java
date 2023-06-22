@@ -33,7 +33,7 @@ public class UsuarioReadServlet extends HttpServlet {
 
 		UsuarioDAO usuarioDAO = UsuarioDAO.getInstancia();
 		
-		List<Usuario> usuarios = usuarioDAO.obtenerUsuarios();
+		List<Usuario> usuarios = usuarioDAO.read();
 
 		request.setAttribute("usuarios", usuarios);
 
