@@ -111,19 +111,18 @@ public class ClienteDAO {
  	}
 
  	public void update(Cliente clie) {
- 		String query = "UPDATE " + tabla + "SET " + update + " WHERE rut = ?";
+ 		String query = "UPDATE " + tabla + " SET " + update + " WHERE rut = ?";
  		try (PreparedStatement statement = conexion.prepareStatement(query)) {
-			statement.setString(1, clie.getRut());
-        	statement.setString(2, clie.getNombres());
-            statement.setString(3, clie.getFechaNacimiento().toString());
-			statement.setString(5, clie.getApellidos());
-			statement.setString(6, clie.getTelefono());
-			statement.setString(7, clie.getSistemaSalud());
-			statement.setString(8, clie.getAfp());
-			statement.setString(9, clie.getDireccion());
-			statement.setString(10, clie.getComuna());
+        	statement.setString(1, clie.getNombres());
+            statement.setString(2, clie.getFechaNacimiento().toString());
+			statement.setString(3, clie.getApellidos());
+			statement.setString(4, clie.getTelefono());
+			statement.setString(5, clie.getSistemaSalud());
+			statement.setString(6, clie.getAfp());
+			statement.setString(7, clie.getDireccion());
+			statement.setString(8, clie.getComuna());
 // Especificar RUT
- 			statement.setString(1, clie.getRut());
+ 			statement.setString(9, clie.getRut());
 // Ejecutar
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -160,6 +159,7 @@ public class ClienteDAO {
 	                cliente.setFechaNacimiento(LocalDate.parse(resultados.getString("fechaNacimiento")));
 	                cliente.setApellidos(resultados.getString("apellidos"));
 	                cliente.setTelefono(resultados.getString("telefono"));
+	                cliente.setSistemaSalud(resultados.getString("sistemaSalud"));
 	                cliente.setAfp(resultados.getString("afp"));
 	                cliente.setDireccion(resultados.getString("direccion"));
 	                cliente.setComuna(resultados.getString("comuna"));

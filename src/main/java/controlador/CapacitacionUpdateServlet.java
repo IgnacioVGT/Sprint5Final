@@ -61,6 +61,8 @@ String rut;
 		capa.setHoraTermino(horaTermino);
 		
 		capaDAO.update(capa);
+		
+		request.getRequestDispatcher("/CapacitacionRead").forward(request, response);
 	}
 
 }

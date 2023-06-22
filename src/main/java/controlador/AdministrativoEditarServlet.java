@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CapacitacionDAO;
+import dao.AdministrativoDAO;
 
 /**
- * Servlet implementation class CapacitacionDeleteServlet
+ * Servlet implementation class AdministrativoEditarServlet
  */
-@WebServlet("/CapacitacionDelete")
-public class CapacitacionDeleteServlet extends HttpServlet {
+@WebServlet("/AdministrativoEditar")
+public class AdministrativoEditarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CapacitacionDeleteServlet() {
+    public AdministrativoEditarServlet() {
         super();
     }
 
@@ -27,9 +27,10 @@ public class CapacitacionDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CapacitacionDAO capaDAO = CapacitacionDAO.getInstancia();
-		capaDAO.delete(Integer.parseInt(request.getParameter("id")));
-		request.getRequestDispatcher("/CapacitacionRead").forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		AdministrativoDAO adminDAO = AdministrativoDAO.getInstancia();
+		request.setAttribute("admin", adminDAO.readPorRUT(request.getParameter("rut")));
+		request.getRequestDispatcher("/editarAdministrativo.jsp").forward(request, response);
 	}
 
 	/**

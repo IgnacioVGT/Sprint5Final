@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CapacitacionDAO;
+import dao.UsuarioDAO;
 
 /**
- * Servlet implementation class CapacitacionDeleteServlet
+ * Servlet implementation class UsuarioDeleteServlet
  */
-@WebServlet("/CapacitacionDelete")
-public class CapacitacionDeleteServlet extends HttpServlet {
+@WebServlet("/UsuarioDelete")
+public class UsuarioDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CapacitacionDeleteServlet() {
+    public UsuarioDeleteServlet() {
         super();
     }
 
@@ -27,9 +27,9 @@ public class CapacitacionDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CapacitacionDAO capaDAO = CapacitacionDAO.getInstancia();
-		capaDAO.delete(Integer.parseInt(request.getParameter("id")));
-		request.getRequestDispatcher("/CapacitacionRead").forward(request, response);
+		UsuarioDAO user = UsuarioDAO.getInstancia();
+		user.delete(request.getParameter("rut"));
+		request.getRequestDispatcher("/UsuarioRead").forward(request, response);
 	}
 
 	/**

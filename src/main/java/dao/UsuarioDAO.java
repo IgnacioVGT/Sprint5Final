@@ -115,11 +115,11 @@ public class UsuarioDAO {
         }
     }
 
-    public void delete(int id) {
-        String query = "DELETE FROM usuario WHERE id = ?";
+    public void delete(String rut) {
+        String query = "DELETE FROM " + tabla + " WHERE rut = ?";
 
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
-            statement.setInt(1, id);
+            statement.setString(1, rut);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

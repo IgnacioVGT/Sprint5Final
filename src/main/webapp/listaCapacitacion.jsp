@@ -49,8 +49,8 @@
 	                <td><%= capacitacion.getHoraInicio() %></td>
 	                <td><%= capacitacion.getHoraTermino() %></td>
 	                <td>
-                            <a href="editar-usuario?id=<%= capacitacion.getId() %>">Editar</a>
-                            <a href="eliminar-usuario?id=<%= capacitacion.getId() %>">Eliminar</a>
+                            <a href="CapacitacionDetalle?id=<%= capacitacion.getId() %>">Editar</a>
+                            <a href="CapacitacionDelete?id=<%= capacitacion.getId() %>">Eliminar</a>
                    </td>
 	        	</tr>
 	    	<% } %>

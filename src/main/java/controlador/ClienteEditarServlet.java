@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CapacitacionDAO;
+import dao.ClienteDAO;
 
 /**
- * Servlet implementation class CapacitacionDeleteServlet
+ * Servlet implementation class ClienteEditarServlet
  */
-@WebServlet("/CapacitacionDelete")
-public class CapacitacionDeleteServlet extends HttpServlet {
+@WebServlet("/ClienteEditar")
+public class ClienteEditarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CapacitacionDeleteServlet() {
+    public ClienteEditarServlet() {
         super();
     }
 
@@ -27,9 +27,9 @@ public class CapacitacionDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CapacitacionDAO capaDAO = CapacitacionDAO.getInstancia();
-		capaDAO.delete(Integer.parseInt(request.getParameter("id")));
-		request.getRequestDispatcher("/CapacitacionRead").forward(request, response);
+		ClienteDAO clienteDAO = ClienteDAO.getInstancia();
+		request.setAttribute("cliente", clienteDAO.readPorRUT(request.getParameter("rut")));
+		request.getRequestDispatcher("/editarCliente.jsp").forward(request, response);
 	}
 
 	/**

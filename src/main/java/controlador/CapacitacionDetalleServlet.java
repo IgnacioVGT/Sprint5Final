@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import dao.CapacitacionDAO;
 
 /**
- * Servlet implementation class CapacitacionDeleteServlet
+ * Servlet implementation class CapacitacionDetalleServlet
  */
-@WebServlet("/CapacitacionDelete")
-public class CapacitacionDeleteServlet extends HttpServlet {
+@WebServlet("/CapacitacionDetalle")
+public class CapacitacionDetalleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CapacitacionDeleteServlet() {
+    public CapacitacionDetalleServlet() {
         super();
     }
 
@@ -28,8 +28,8 @@ public class CapacitacionDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CapacitacionDAO capaDAO = CapacitacionDAO.getInstancia();
-		capaDAO.delete(Integer.parseInt(request.getParameter("id")));
-		request.getRequestDispatcher("/CapacitacionRead").forward(request, response);
+		request.setAttribute("capacitacion", capaDAO.readPorID(Integer.parseInt(request.getParameter("id"))));
+		request.getRequestDispatcher("/editarCapacitacion.jsp").forward(request, response);
 	}
 
 	/**

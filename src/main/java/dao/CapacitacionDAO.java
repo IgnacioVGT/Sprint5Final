@@ -101,7 +101,7 @@ public class CapacitacionDAO {
 	
 	public void update(Capacitacion capacitacion) {
         String query = "UPDATE " + tabla
-        		+ " SET rutCliente = ?, lugar = ? cantAsistentes = ?, "
+        		+ " SET rutCliente = ?, lugar = ?, cantAsistentes = ?, "
         		+ "horaInicio = ?, horaTermino = ? "
         		+ "WHERE id = ?";
 
@@ -113,6 +113,7 @@ public class CapacitacionDAO {
             statement.setString(5, capacitacion.getHoraTermino().toString());
 // Especificar ID
             statement.setInt(6, capacitacion.getId());
+            System.out.println(statement);
 // Ejecutar
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -122,7 +123,6 @@ public class CapacitacionDAO {
 	
     public void delete(int id) {
         String query = "DELETE FROM " + tabla + " WHERE id = ?";
-
         try (PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setInt(1, id);
 // Ejecutar
@@ -132,7 +132,27 @@ public class CapacitacionDAO {
         }
     }
 //_______________________________________________________________________
-    public void readPorID(int id) {
-    	
-    }
+    public Capacitacion readPorID(int id) {
+    	Capacitacion capacitacion = null;
+    	String query = "SELECT id, " + columnas + " FROM " + tabla + " WHERE id= ?";
+    	try (PreparedStatement statement = conexion.prepareStatement(query)) {
+    		statement.setInt(1, id);
+    		
+    		try (ResultSet resultados = statement.executeQuery()) {
+	    		if(resultados.next()) {
+	    			capacitacion = new Capacitacion();
+					capacitacion.setId(resultados.getInt("id"));
+					capacitacion.setRutCliente(resultados.getString("rutCliente"));
+					capacitacion.setLugar(resultados.getString("lugar"));
+					capacitacion.setFecha(LocalDate.parse(resultados.getString("fecha")));
+					capacitacion.setCantAsistentes(Integer.parseInt(resultados.getString("cantAsistentes")));
+					capacitacion.setHoraInicio(LocalTime.parse(resultados.getString("horaInicio")));
+					capacitacion.setHoraTermino(LocalTime.parse(resultados.getString("horaTermino")));
+	    		}
+    		}
+		} catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return capacitacion;
+	}
 }

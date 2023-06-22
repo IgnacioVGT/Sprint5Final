@@ -13,6 +13,108 @@
 
 .centrar{
 	text-align: center;
+	background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(12,80,111,1) 15%, rgba(0,212,255,1) 100%);
+	
+}
+/*_____________________________________________________*/
+@media only screen and (max-width: 599px) {
+	/* Cel */
+
+#menu{
+	font-family:verdana;
+	font-size: 0.5rem;
+}
+
+form{
+	text-align: center;
+	width: 97.5%;
+	margin: 0.75rem auto;
+}
+
+#menu ul li:hover > ul li{
+	margin: 0.25rem 0;
+}
+
+h1{
+	font-size: 2rem;
+	margin: 0.5rem 0;
+}
+
+h2{
+    font-size: 1.5rem;
+    font-family: Verdana;
+}
+
+p{
+	font-size: 1.25rem;
+}
+
+legend{
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+footer{
+	width: 100%;
+}
+}
+/*_____________________________________________________*/
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+#menu{
+	font-family:verdana;
+	font-size: 1rem;
+}
+
+form{
+	text-align: center;
+	width: 95%;
+	margin: 0.75rem auto;
+}
+
+#menu ul li:hover > ul li{
+	margin: 0.5rem 0;
+}
+
+h1{
+	font-size: 2.255rem;
+	margin: 0.75rem 0;
+}
+
+h2{
+    font-size: 1.8rem;
+    font-family: Verdana;
+}
+
+p{
+	font-size: 1.75rem;
+}
+
+legend{
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+footer{
+	width: 100%;
+}
+}
+/*_____________________________________________________*/
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
 }
 
 #cuerpo{
@@ -25,8 +127,9 @@ header{
 }
 
 #menu{
-	
 	font-weight: bold;
+	font-family:verdana;
+	font-size: 7.5rem;
 }
 
 #menu ul{
@@ -91,7 +194,8 @@ header{
 }
 */
 body{
-	background-color: rgb(255, 255, 255);
+	background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(12,80,111,1) 15%, rgba(0,212,255,1) 100%);
 }
 
 body *{
@@ -100,11 +204,12 @@ body *{
 }
 
 h1{
-	font-size: 3rem;
+	font-size: 4rem;
 	margin: 2rem 0;
 }
 h2{
-    font-size: 2rem;
+    font-size: 3rem;
+    font-family: Verdana;
 }
 
 p{
@@ -122,10 +227,6 @@ input[type=radio]+label{
     user-select: none;
 }
 
-input[type=date]{
-	padding: 0 2rem;
-}
-
 .seleccion{
     margin-top: 2rem;
 	display: flex;
@@ -133,6 +234,8 @@ input[type=date]{
 	flex-wrap: nowrap;
 	justify-content: space-evenly;
 	align-items: center;
+	font-size: 140%;
+	font-family: Verdana;
 }
 
 form{
@@ -147,9 +250,11 @@ legend{
 }
 
 fieldset{
-	border-radius: 10%;
+	border-radius: 15%;
 	background-color: rgba(0,0,0,0.2);
 	border: 0.5rem black double;
+	margin: 150px;
+	font-family: verdana;
 }
 
 form>fieldset>ul>li{
@@ -235,7 +340,8 @@ footer{
 	justify-content: center;
 	align-items: center;
 	
-	background-color: rgba(0,0,0,0.3);
+	background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(12,80,111,1) 15%, rgba(0,212,255,1) 100%);
 }
 
 footer *{

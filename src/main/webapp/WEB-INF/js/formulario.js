@@ -19,4 +19,12 @@ $(document).ready(function(){
                 break;
         }
     });
+    
+    $("#editar").click(function(){
+	    $("input").prop("disabled", !$("input").prop("disabled"));
+	    $("select").prop("disabled", !$("select").prop("disabled"));
+	    $("input[name=rut]").prop("disabled", true);
+	    $("input[name=dv]").prop("disabled", true);
+        $("#editar").css("display", "none");
+	});
 });

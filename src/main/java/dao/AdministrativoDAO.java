@@ -104,14 +104,14 @@ public class AdministrativoDAO {
  	}
  	
  	public void update(Administrativo admin) {
- 		String query = "UPDATE " + tabla + "SET " + update + " WHERE rut = ?";
+ 		String query = "UPDATE " + tabla + " SET " + update + " WHERE rut = ?";
  		try (PreparedStatement statement = conexion.prepareStatement(query)) {
         	statement.setString(1, admin.getNombres());
             statement.setString(2, admin.getFechaNacimiento().toString());
             statement.setString(3, admin.getArea());
             statement.setString(4, admin.getExperienciaPrevia());
 // Especificar RUT
- 			statement.setString(1, admin.getRut());
+ 			statement.setString(5, admin.getRut());
 // Ejecutar
             statement.executeUpdate();
         } catch (SQLException e) {

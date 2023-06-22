@@ -103,14 +103,15 @@ public class ProfesionalDAO {
  	}
  	
  	public void update(Profesional prof) {
- 		String query = "UPDATE " + tabla + "SET " + update + " WHERE rut = ?";
+ 		String query = "UPDATE " + tabla + " SET " + update + " WHERE rut = ?";
  		try (PreparedStatement statement = conexion.prepareStatement(query)) {
         	statement.setString(1, prof.getNombres());
             statement.setString(2, prof.getFechaNacimiento().toString());
             statement.setString(3, prof.getTitulo());
             statement.setString(4, prof.getFechaIngreso().toString());
 // Especificar RUT
- 			statement.setString(1, prof.getRut());
+ 			statement.setString(5, prof.getRut());
+// 			System.out.println(statement);
 // Ejecutar
             statement.executeUpdate();
         } catch (SQLException e) {

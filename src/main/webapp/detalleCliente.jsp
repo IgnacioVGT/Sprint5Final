@@ -37,6 +37,9 @@
 			<li>Nombres:
 				<input disabled placeholder=" <%= user.getNombres() %> ">
 			</li>
+			<li>Apellidos:
+				<input disabled	placeholder="<%= user.getApellidos() %>">
+			</li>
 			<li>Fecha Nacimiento:
 				<input disabled placeholder=" <%= user.getFechaNacimiento().toString() %> " >
 			</li>
@@ -57,11 +60,14 @@
 			</li>
 		</ul>
 		<a href="UsuarioRead"><button type="button">Atras</button></a>
-		<a href="UsuarioRead"><button type="button">Atras</button></a>
+		<a href="ClienteEditar?rut=<%= user.getRut()%>"><button type="button">editar</button></a>
+		<a href="UsuarioDelete?rut=<%= user.getRut()%>"><button type="button">Eliminar</button></a>
 	</fieldset>
 </form>
 
 
 <jsp:include page="/WEB-INF/piezas/Footer.jsp"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script> <%@include file="/WEB-INF/js/formulario.js"%> </script>
 </body>
 </html>

@@ -51,7 +51,7 @@ pageEncoding="UTF-8"%>
 			</li>
 			<li>Nombres:
 				<input type="text" name="nombres" placeholder="Carlos Julio"
-													pattern="\w+ \w+" required>
+													pattern="[\w+ ]+" required>
 			</li>
 			<li>Fecha Nacimiento:
 				<input type="date" name="fechaNacimiento"
@@ -176,7 +176,7 @@ pageEncoding="UTF-8"%>
 			</li>
 			<li>Dirección:
 				<input type="text" name="direccion"
-							placeholder="Los Azufres #123" pattern="[\w+ ]+#\d+$"
+							placeholder="Los Azufres #123" pattern="[\w+ ]+ #\d+$"
 														maxlength="30" required>
 			</li>
 			<li>Comuna:
